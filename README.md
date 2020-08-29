@@ -4,6 +4,7 @@ Problem :
 1) Membuat fungsi untuk menghitung jumlah jabat tangan tanpa menggunakan rumus matematika dengan input n. 
 2) Membuat fungsi untuk menghasilkan serial key dengan input adalah banyak baris yang dinginkan untuk setiap serial key yang dihasilkan.
 3) Melakukan pengurutan terhadap data di dalam element per array, di dalam array multi-dimensi.
+
 4a) 1. Membuat Query DB/MySQL untuk menampilkan :
       - Seluruh data dari table video beserta category.
       - Seluruh data video berdasarkan category tertentu.
