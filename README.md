@@ -6,14 +6,23 @@ Problem :
 3) Melakukan pengurutan terhadap data di dalam element per array, di dalam array multi-dimensi.
 
 4a) 1. Membuat Query DB/MySQL untuk menampilkan :
+
       - Seluruh data dari table video beserta category.
+      
       - Seluruh data video berdasarkan category tertentu.
+      
       - Spesifik data video dengan Category.
+      
     2. Screenshoot hasil query POST / Menambahkan Data (INSERT)
+    
 5a) Membuat aplikasi sederhana CRUD. Dengan ketentuan:
+
     a.  Dapat menambah data video dan category.
+    
     b.  Dapat menampilkan detail video dan dapat play video.
+    
     c.  Dapat mengedit video dan category.
+    
     d.  Dapat menghapus video dan category.
 
 Penggunaan sistem yang telah dibuat:
