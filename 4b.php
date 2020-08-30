@@ -287,7 +287,7 @@
                     }
                 }
 
-                header("location:4.php?mod=upload&error=$error");
+                header("location:4b.php?mod=upload&error=$error");
                 exit();
                 
               }elseif(isset($id_update)){
@@ -373,7 +373,7 @@
                   } // END of update
                 // } // END of cek upload baru
 
-                header("location:4.php?mod=video&error=$error");
+                header("location:4b.php?mod=video&error=$error");
                 exit();
               } // END of isset update
             } // END of isset submit
@@ -445,7 +445,7 @@
                     $error = "yes";
                   }
 
-                  header("location:4.php?mod=category&error=$error");
+                  header("location:4b.php?mod=category&error=$error");
                   exit();
               }
 
@@ -461,7 +461,7 @@
                             <td><?php echo $row['name'];?></td>
                             <td align="center" class="p-1 w-50">
                                 <button class="btn btn-warning" onclick="document.location.href='?mod=category&id_update=<?= $row['id']; ?>'"> UPDATE </button>
-                                <button class="btn btn-danger" onclick="confDelete('Do you want to delete this category ?' ,'4.php?mod=delete_cat&id_delete=<?= $row['id']; ?>&redir=category')"> DELETE </button>
+                                <button class="btn btn-danger" onclick="confDelete('Do you want to delete this category ?' ,'4b.php?mod=delete_cat&id_delete=<?= $row['id']; ?>&redir=category')"> DELETE </button>
                             </td>
                  
                         </tr>
@@ -494,7 +494,7 @@
                        if (!$result = $conn->query($sql)) {
                            $_SESSION["msg"] = "There is an error " . $conn->error;
                            $error = "yes";
-                           header("location:4.php?mod=$redir&error=$error");
+                           header("location:4b.php?mod=$redir&error=$error");
                            exit();
                        }
                        $row = $result->fetch_array(MYSQLI_ASSOC);
@@ -510,19 +510,19 @@
                            }else{
                              $_SESSION["msg"] = "Delete almost success. Thumbnail was failed to deleted !";
                              $error = "yes";
-                             header("location:4.php?mod=$redir&error=$error");
+                             header("location:4b.php?mod=$redir&error=$error");
                              exit();
                            }
                          }else{
                            $_SESSION["msg"] = "Delete almost success. Video was failed to deleted !";
                            $error = "yes";
-                           header("location:4.php?mod=$redir&error=$error");
+                           header("location:4b.php?mod=$redir&error=$error");
                            exit();
                          }
                         }else{
                             $_SESSION["msg"] = "Delete almost success. But CHMOD was failed !";
                             $error = "yes";
-                            header("location:4.php?mod=$redir&error=$error");
+                            header("location:4b.php?mod=$redir&error=$error");
                             exit();
                       } // END of chmod
                     }
@@ -535,7 +535,7 @@
                   $error = "yes";
               }
 
-              header("location:4.php?mod=$redir&error=$error");
+              header("location:4b.php?mod=$redir&error=$error");
               exit();
 
               break;
@@ -549,12 +549,12 @@
                     if (!$conn->query($sql)) {
                        $_SESSION["msg"] = "There is an error " . $conn->error;
                        $error = "yes";
-                       header("location:4.php?mod=$redir&error=$error");
+                       header("location:4b.php?mod=$redir&error=$error");
                        exit();
                     }else{
                       $_SESSION["msg"] = "Category has been deleted !";
                       $error = "no";
-                      header("location:4.php?mod=$redir&error=$error");
+                      header("location:4b.php?mod=$redir&error=$error");
                       exit();
                     }
                   }
@@ -587,7 +587,7 @@
                   
                   <div class="btn-group m-2">
                     <button class="btn btn-warning mr-1" onclick="document.location.href='?mod=upload&id_update=<?= $id; ?>'"> UPDATE </button>
-                    <button class="btn btn-danger" onclick="confDelete('Do you want to delete this content ?' ,'4.php?mod=delete_vid&id_delete=<?= $id; ?>&redir=video')"> DELETE </button>
+                    <button class="btn btn-danger" onclick="confDelete('Do you want to delete this content ?' ,'4b.php?mod=delete_vid&id_delete=<?= $id; ?>&redir=video')"> DELETE </button>
                   </div>
 
                   <div class="card" style="width: 18rem;">
