@@ -19,7 +19,7 @@ Problem :
     2. Screenshoot hasil query POST / Menambahkan Data (INSERT)
     
 
-5a) Membuat aplikasi sederhana CRUD. Dengan ketentuan:
+4b) Membuat aplikasi sederhana CRUD. Dengan ketentuan:
 
     a.  Dapat menambah data video dan category.
     
