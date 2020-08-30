@@ -42,3 +42,5 @@ Penggunaan sistem yang telah dibuat:
      menentukan banyak sub-array di dalam suatu variable array.
   4a) Screenshot query untuk menampilkan data yang telah disebutkan pada Problem.
   5a) Membuat aplikasi sederhana CRUD dengan ketentuan sebagaimana yang telah disebutkan pada Problem.
+
+  Masing-masing problem diselesaikan dalam satu file / source (Berdasarkan instruksi soal).
