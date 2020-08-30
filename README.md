@@ -46,6 +46,6 @@ Penggunaan sistem yang telah dibuat:
      
   4a) Screenshot query untuk menampilkan data yang telah disebutkan pada Problem.
   
-  4b) Membuat aplikasi sederhana CRUD dengan ketentuan sebagaimana yang telah disebutkan pada Problem.
+  4b) Membuat aplikasi sederhana CRUD dengan ketentuan sebagaimana yang telah disebutkan pada Problem (Semua dikerjakan dalam satu source code).
   
-  Dan tiap soal dikerjakan masing-masing dalam satu source.
+  Dan tiap soal dikerjakan masing-masing dalam satu file / source (Berdasarkan instruksi test).
