@@ -46,4 +46,4 @@ Penggunaan sistem yang telah dibuat:
      
   4a) Screenshot query untuk menampilkan data yang telah disebutkan pada Problem.
   
-  5a) Membuat aplikasi sederhana CRUD dengan ketentuan sebagaimana yang telah disebutkan pada Problem.
+  4b) Membuat aplikasi sederhana CRUD dengan ketentuan sebagaimana yang telah disebutkan pada Problem.
