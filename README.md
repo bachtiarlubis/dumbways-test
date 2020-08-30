@@ -33,6 +33,7 @@ Penggunaan sistem yang telah dibuat:
   1) Web Service (XAMPP, LAMPP, dll)
    - PHP v5.6
    - MariaDB v10.1.38
+   - Koneksi internet, karena saya menggunakan library CDN
   2) Menggunakan Text Editor Sublime-Text 3
 
 *) Penggunaan :
