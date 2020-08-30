@@ -1,0 +1,32 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #BFB6FB !important;
+}
+
+.container{
+	margin-top: 12%;
+}
+
+h1{
+	margin-bottom: 50px !important;
+}
+
+.play-btn{
+	width: 50px;
+	position: relative;
+	top: -50%;
+	left: 45%;
+	cursor: pointer;
+	transition: 0.5s;
+	opacity: 0;
+}
+
+.col-md-4:hover .play-btn{
+	opacity: 1;
+}
+
+.modal-content{
+	background: transparent !important;
+	border: none !important;
+}
