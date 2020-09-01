@@ -1,4 +1,6 @@
 <?php 
+	const TITLE = "fungsi untuk meng-generate serial number yang dibutuhkan <br> format : XXXX-XXXX-XXXX-XXXX";
+
 	// Penghasil string alpanumerik acak
 	function generate_string($strength = 3) {
 		// $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -50,6 +52,8 @@
 	</head>
 	<body>
 		<div class="container">
+			<h3 class="mt-3 text-center"><?= ucwords(TITLE); ?></h3>
+			<hr class="mb-3">
 			<?php 
 				if(isset($_POST["submit"])){
 					if (empty($_POST["jlh_baris"])) {
@@ -67,7 +71,7 @@
 			<form action="" method="POST">
 				<div class="form-group mt-2">
 			    	<label>Masukkan Jumlah Baris Serial Number</label>
-			    	<input type="text" name="jlh_baris" class="form-control" aria-describedby="inputHelp" autocomplete="off" onkeypress="return isNumberKey(event)">
+			    	<input type="text" name="jlh_baris" class="form-control" aria-describedby="inputHelp" autocomplete="off" onkeypress="return isNumberKey(event)" value="<?= isset($_POST["jlh_baris"]) ? $_POST["jlh_baris"] : NULL; ?>">
 			    	<small id="inputHelp" class="form-text text-muted">Contoh : 3</small>
 			  	</div>
 				<input type="submit" class="btn btn-primary" name="submit" value="Proses">

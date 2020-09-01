@@ -1,4 +1,7 @@
 <?php 
+	const TITLE = "mengurutkan sub-array berdasarkan jumlah element dan mengurutkan abjad di dalamnya dari a - z";
+
+	// mengurutkan array berdasarkan urutan valuenya
 	function mySortArray(array $theArr){
 		$count = count($theArr);
 		for ($i = 0; $i < $count; $i++) {
@@ -11,6 +14,21 @@
 	      	}
 	  	}
 	  	return $theArr;
+	}
+
+	// Mengurutkan sub-array berdasarkan banyak elemennya
+	function mySortMultiArray(array $theMultiArray){
+		$jlh_output = count($theMultiArray);
+		for ($i=0; $i < $jlh_output; $i++) { 
+			for ($j= $i+1; $j < $jlh_output; $j++) { 
+				if (count($theMultiArray[$i]) > count($theMultiArray[$j])) {
+					$temp = $theMultiArray[$i];
+	              	$theMultiArray[$i] = $theMultiArray[$j];
+	              	$theMultiArray[$j] = $temp;
+				}
+			}
+		}
+		return $theMultiArray;
 	}
 ?>
 <!DOCTYPE html>
@@ -35,6 +53,8 @@
 	</head>
 	<body>
 		<div class="container mt-5">
+			<h3 class="mt-3 text-center"><?= ucwords(TITLE); ?></h3>
+			<hr class="mb-3">
 			<?php 
 				if(isset($_POST["submit"])){
 					if (empty($_POST["data0"])) {
@@ -78,27 +98,29 @@
 					
 					<?php 
 						if (isset($_POST["submit"])) {
-							
-							$jlh_sbm = count($_POST);
+
+							// 2 karena submit POST tidak dihitung
+							$jlh_sbm = count($_POST) - 1;
+
 							$dataInput = [];
 							$dataOutput = [];
 							echo " <label>Hasil : </label>";
 			  				echo "	<span class='border border-success w-100 p-3'>";
 			  				echo "		<pre>";
 
-							// -1 karena submit POST tidak dihitung
-							for ($i=0; $i < $jlh_sbm-1; $i++) { 
+							for ($i=0; $i < $jlh_sbm; $i++) { 
 								$toArr = explode(",", str_replace(" ", "", $_POST["data".$i]));
 								$dataInput[] = array_filter($toArr);
 							}
 
-							// proses sorter dimulai
+							// proses sorter berdasarkan urutan value dimulai
 							foreach ($dataInput as $v) {
 								$dataOutput[] = mySortArray($v);
 							}
 
-							// Cetak hasil sorting
-							print_r($dataOutput);
+							// Cetak hasil sorting berdasarkan jumlah sub-array
+							// print_r($dataOutput);
+							print_r(mySortMultiArray($dataOutput));
 
 							echo "		</pre>";
 							echo "	</span>";
@@ -113,7 +135,9 @@
 		 <script>		     
 		 	  // Pembuatan input form berdasarkan nilai select
 		      $("#jlhInput").change(function() {
-		        var value = +$(this).val();
+		      	
+	      		value = +$(this).val();
+		      	
 		        var nr = 0;
 		        var elem = $('#inputArr').empty();
 		        while (nr < value) {

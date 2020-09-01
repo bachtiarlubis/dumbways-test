@@ -1,13 +1,15 @@
 <?php 
+	
+	const TITLE = "menghitung jumlah jabat tangan yang terjadi dalam pertemuan yang dihadiri oleh beberapa orang";
+
 	// fungsi handshake
 	function count_handshake($jlh_orang = 0){
 		if ($jlh_orang < 1) {
 			return false;
 		}
 
-		$i = 0;
 		$t = 0;
-		for ($i=0; $i < $jlh_orang; $i++) { 
+		for ($i=1; $i < $jlh_orang; $i++) { 
 			$t += $i;
 		}
 		return $t;
@@ -35,6 +37,8 @@
 	</head>
 	<body>
 		<div class="container">
+			<h3 class="mt-3 text-center"><?= ucwords(TITLE); ?></h3>
+			<hr class="mb-3">
 			<?php 
 				if(isset($_POST["submit"])){
 					if (empty($_POST["jlh_orang"])) {
@@ -52,7 +56,7 @@
 			<form action="" method="POST">
 				<div class="form-group mt-2">
 			    	<label>Masukkan Angka</label>
-			    	<input type="text" name="jlh_orang" class="form-control" aria-describedby="inputHelp" autocomplete="off" onkeypress="return isNumberKey(event)">
+			    	<input type="text" name="jlh_orang" class="form-control" aria-describedby="inputHelp" autocomplete="off" onkeypress="return isNumberKey(event)" value="<?= isset($_POST["jlh_orang"]) ? $_POST["jlh_orang"] : NULL; ?>">
 			    	<small id="inputHelp" class="form-text text-muted">Contoh : 10</small>
 			  	</div>
 				<input type="submit" class="btn btn-primary" name="submit" value="Proses">
