@@ -3,6 +3,7 @@
 
   ini_set('display_errors',1);
   error_reporting(E_ALL);
+  // error_reporting(~E_ALL);
 
   $conn = new mysqli("localhost", "root", "", "db_streaming_video"); 
 
@@ -178,14 +179,14 @@
               $thumbnailTmp = $_FILES["thumbnail"]["tmp_name"];
               // $thumbnailType = $_FILES["thumbnail"]["type"];
               // $thumbnailSize = $_FILES["thumbnail"]["size"];
-              $imgFolderPath = __DIR__;
+              $imgFolderPath = __DIR__."\\";
               $ext = end($thumbnailName);
 
               $videoName = $_FILES["file"]["name"];
               $videoName = explode(".", $videoName);
               $videoTmp = $_FILES["file"]["tmp_name"];
               $newVideoName = "video_".time().".".end($videoName);
-              $videoFolderPath = __DIR__;
+              $videoFolderPath = __DIR__."\\";
               /*$videoType = $_FILES["file"]["type"];
               $videoSize = $_FILES["file"]["size"];*/
               
@@ -485,24 +486,32 @@
               $redir = isset($_GET["redir"]) ? $_GET["redir"] : '';
               if (isset($_GET["id_delete"])){
                   if (!empty($_GET["id_delete"])) {
+                    // Ambil data video dan thumbnail
+                    $sql = "SELECT attached, thumbnail FROM video_tb WHERE id = '".$_GET["id_delete"]."'";
+                    if (!$result = $conn->query($sql)) {
+                        $_SESSION["msg"] = "There is an error " . $conn->error;
+                        $error = "yes";
+                        header("location:4b.php?mod=$redir&error=$error");
+                        exit();
+                    }
+                    $row = $result->fetch_array(MYSQLI_ASSOC);
+                    // END ambil data video dan thumbnail
+
+                    // Hapus data video dan thumbnail
                     $sql = "DELETE FROM video_tb WHERE id = '".$_GET["id_delete"]."'";
                     if (!$conn->query($sql)) {
                        $_SESSION["msg"] = "There is an error " . $conn->error;
                        $error = "yes";
+                       header("location:4b.php?mod=$redir&error=$error");
+                       exit();
                     }else{
-                       $sql = "SELECT attached FROM video_tb WHERE id = '".$_GET["id_delete"]."'";
-                       if (!$result = $conn->query($sql)) {
-                           $_SESSION["msg"] = "There is an error " . $conn->error;
-                           $error = "yes";
-                           header("location:4b.php?mod=$redir&error=$error");
-                           exit();
-                       }
-                       $row = $result->fetch_array(MYSQLI_ASSOC);
-                       $imgFolderPath = __DIR__;
-                       $videoFolderPath = __DIR__;
-                       $imgToDelete = $imgFolderPath.$row["attached"];
+
+                       $imgFolderPath = __DIR__."\\";
+                       $videoFolderPath = __DIR__."\\";
+                       $imgToDelete = $imgFolderPath.$row["thumbnail"];
                        $vidToDelete = $videoFolderPath.$row["attached"];
-                      if(chmod($videoFolderPath, 777) && chmod($imgFolderPath, 777)){
+
+                      if(chmod($vidToDelete, 0777) && chmod($imgToDelete, 0777)){
                          if (unlink($vidToDelete)) {
                            if (unlink($imgToDelete)) {
                               $_SESSION["msg"] = "Data with id ".$_GET["id_delete"]." was deleted successfully!";
@@ -591,7 +600,7 @@
                   </div>
 
                   <div class="card" style="width: 18rem;">
-                    <img src="thumbnails/<?= $thumbnail; ?>" class="img-fluid rounded" data-toggle="modal" data-target="#play-video-<?= $id;?>">
+                    <img src="<?= $thumbnail; ?>" class="img-fluid rounded" data-toggle="modal" data-target="#play-video-<?= $id;?>">
                     <div class="card-body m-1 p-1">
                       <h5 class="card-title">Title : <?= $title; ?></h5>
                       <h6 class="card-subtitle mb-2 text-muted">Category : <?= $title; ?></h6>
@@ -605,7 +614,7 @@
                     <div class="modal-content">
                       <div class="modal-body">
                         <video class="w-100" controls loop>
-                          <source src="videos/<?= $attached ?>" type="video/mp4">
+                          <source src="<?= $attached ?>" type="video/mp4">
                         </video>
                       </div>
                     </div>
