@@ -3,9 +3,20 @@
 
 	// mengurutkan array berdasarkan urutan valuenya
 	function mySortArray(array $theArr){
+		// added
+		// untuk menghapus string kosong character di value
+		$theArr = array_map('trim', $theArr);
+		// untuk mengambil value yang tidak kosong
+		$theArr = array_filter($theArr, function($value) { 
+					return !is_null($value) && $value !== ''; 
+				});
+		// mengembalikan value array dan mengindeks array dengan angka (reindex)
+		$theArr = array_values($theArr);
+
 		$count = count($theArr);
 		for ($i = 0; $i < $count; $i++) {
 	      	for ($j = $i + 1; $j < $count; $j++) {
+
     	      	if ($theArr[$i] > $theArr[$j]) {
 	              	$temp = $theArr[$i];
 	              	$theArr[$i] = $theArr[$j];
@@ -18,6 +29,9 @@
 
 	// Mengurutkan sub-array berdasarkan banyak elemennya
 	function mySortMultiArray(array $theMultiArray){
+		// added
+		// $theMultiArray = array_filter($theMultiArray);
+
 		$jlh_output = count($theMultiArray);
 		for ($i=0; $i < $jlh_output; $i++) { 
 			for ($j= $i+1; $j < $jlh_output; $j++) { 
@@ -137,6 +151,7 @@
 		      $("#jlhInput").change(function() {
 		      	
 	      		value = +$(this).val();
+	      		// value = $(this).val();
 		      	
 		        var nr = 0;
 		        var elem = $('#inputArr').empty();
